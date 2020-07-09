@@ -1,0 +1,43 @@
+{
+  "name": "libraryapp-api",
+  "version": "1.0.0",
+  "description": "RESTful API (Backend)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chlasswg26/libraryapp-api.git"
+  },
+  "keywords": [
+    "libraryapp-api",
+    "library",
+    "api",
+    "library"
+  ],
+  "author": "Ichlas Wardy Gustama",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chlasswg26/libraryapp-api/issues"
+  },
+  "homepage": "https://github.com/chlasswg26/libraryapp-api#readme",
+  "dependencies": {
+    "apicache-plus": "^2.2.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "datauri": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.10",
+    "path": "^0.12.7",
+    "redis": "^3.0.2"
+  }
+}
