@@ -13,7 +13,7 @@ const onlyStatus200 = (req, res) => res.statusCode === 200;
 
 Route
     .get('/', cacheWithRedis('5 minutes', onlyStatus200), bookControllers.getBook)
-    .get('/:id', authentication, bookControllers.getBookById)
+    .get('/:id', bookControllers.getBookById)
     .get('/user/:userId', authentication, bookControllers.getBookByUser)
     .post('/filter', authentication, bookControllers.getBookByFilter)
     .post('/', authentication, authorization, multer, bookControllers.postBook)
