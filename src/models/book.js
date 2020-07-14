@@ -16,7 +16,7 @@ module.exports = {
         return new Promise(function(resolve, reject){
             connection.query("SELECT * FROM books WHERE id=?", id, function(error, result){
                 if (!error) {
-                    resolve(result);
+                    resolve(result[0]);
                 } else {
                     reject(new Error(error));
                 }

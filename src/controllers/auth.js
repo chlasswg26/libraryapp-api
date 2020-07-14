@@ -31,7 +31,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 401, { message: 'Email telah terpakai!' });
+            return helper.response(response, 401, { message: 'Email already registered' });
         }
     },
     postLogin: async function(request, response){
@@ -45,9 +45,9 @@ module.exports = {
             const verify_code = result.verify_code;
 
             if (!compare) {
-                return helper.response(response, 401, { message: 'Kata sandi yang dimasukkan salah!' });
+                return helper.response(response, 401, { message: 'Incorrect password' });
             } else if (isVerify === '1' || verify_code !== null) {
-                return helper.response(response, 401, { message: 'Akun belum terverifikasi!' });
+                return helper.response(response, 401, { message: 'Account not verified' });
             } else {
                 delete result.password;
                 const token = jwt.sign({ result }, process.env.SECRET_KEY, {
@@ -62,7 +62,7 @@ module.exports = {
                 return helper.response(response, 200, newData);
             }
         } catch (error) {
-            return helper.response(response, 401, { message: 'Akun belum terdaftar!' });
+            return helper.response(response, 401, { message: 'Account not registered' });
         }
     },
     postVerify: async function(request, response){
@@ -74,13 +74,13 @@ module.exports = {
             const compare = bcrypt.compareSync(otp_code, verify_code);
 
             if (!compare) {
-                return helper.response(response, 401, { message: 'OTP Kode tidak sah!' });
+                return helper.response(response, 401, { message: 'Invalid OTP Code' });
             } else {
                 await authModels.postVerify(setData);
-                return helper.response(response, 200, { message: 'Akun telah diverifikasi.' });
+                return helper.response(response, 200, { message: 'Account has been verified' });
             }
         } catch (error) {
-            return helper.response(response, 401, { message: 'Gagal memverifikasi akun!' });
+            return helper.response(response, 401, { message: 'Failed to verify account' });
         }
     },
     postRefreshToken: async function(request, response){
@@ -89,7 +89,7 @@ module.exports = {
             const result = await authModels.postRefreshToken(token);
 
             if (result === undefined || result === null) {
-                return helper.response(response, 401, { message: 'Token tidak sah!' });
+                return helper.response(response, 401, { message: 'Invalid token' });
             } else {
                 const token = jwt.sign({ result }, process.env.SECRET_KEY, {
                     expiresIn: process.env.REFRESH_TOKEN_LIFE,
@@ -97,7 +97,7 @@ module.exports = {
                 return helper.response(response, 200, { token: token });
             }
         } catch (error) {
-            return helper.response(response, 401, { message: 'Gagal menyegarkan token!' });
+            return helper.response(response, 401, { message: 'Failed to refresh token' });
         }
     },
 }

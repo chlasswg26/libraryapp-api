@@ -8,7 +8,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     getBookById: async function(request, response){
@@ -18,7 +18,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     getBookByUser: async function(request, response){
@@ -28,7 +28,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     getBookByFilter: async function(request, response){
@@ -62,7 +62,7 @@ module.exports = {
             
             return helper.response(response, 200, result, pagination);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     postBook: async function(request, response){
@@ -77,7 +77,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     putBook: async function(request, response){
@@ -93,7 +93,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     deleteBook: async function(request, response){
@@ -103,7 +103,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
 }

@@ -8,7 +8,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     getHistoryByUserId: async function(request, response){
@@ -18,7 +18,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     postHistory: async function(request, response){
@@ -28,7 +28,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
 }

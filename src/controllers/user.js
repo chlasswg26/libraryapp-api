@@ -9,7 +9,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     putUser: async function(request, response){
@@ -18,7 +18,7 @@ module.exports = {
             const files = request.file;
 
             if (!files) {
-                return helper.response(response, 500, { message: 'File gambar kosong!' });
+                return helper.response(response, 500, { message: 'Image file cannot be empty' });
             } else {
                 setData.image = files.filename;
                 const id = request.params.id;
@@ -27,7 +27,7 @@ module.exports = {
                 return helper.response(response, 200, result);
             }
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
 }

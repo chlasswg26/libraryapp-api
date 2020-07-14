@@ -8,7 +8,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     getAuthorById: async function(request, response){
@@ -18,7 +18,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     postAuthor: async function(request, response){
@@ -28,7 +28,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     putAuthor: async function(request, response){
@@ -39,7 +39,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     deleteAuthor: async function(request, response){
@@ -49,7 +49,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
 }

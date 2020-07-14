@@ -8,7 +8,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     getGenreById: async function(request, response){
@@ -18,7 +18,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     postGenre: async function(request, response){
@@ -28,7 +28,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     putGenre: async function(request, response){
@@ -39,7 +39,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
     deleteGenre: async function(request, response){
@@ -49,7 +49,7 @@ module.exports = {
 
             return helper.response(response, 200, result);
         } catch (error) {
-            return helper.response(response, 500, error);
+            return helper.response(response, 500, { message: error });
         }
     },
 }

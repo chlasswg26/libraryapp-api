@@ -7,7 +7,7 @@ module.exports = {
                 if (!error) {
                     delete result[0].password;
                     delete result[0].verify_code;
-                    resolve(result);
+                    resolve(result[0]);
                 } else {
                     reject(new Error(error));
                 }
