@@ -11,16 +11,16 @@ module.exports = {
             return helper.response(response, 500, { message: error });
         }
     },
-    getBookById: async function(request, response){
-        try {
-            const id = request.params.id;
-            const result = await bookModels.getBookById(id);
+    // getBookById: async function(request, response){
+    //     try {
+    //         const id = request.params.id;
+    //         const result = await bookModels.getBookById(id);
 
-            return helper.response(response, 200, result);
-        } catch (error) {
-            return helper.response(response, 500, { message: error });
-        }
-    },
+    //         return helper.response(response, 200, result);
+    //     } catch (error) {
+    //         return helper.response(response, 500, { message: error });
+    //     }
+    // },
     getBookByUser: async function(request, response){
         try {
             const userId = request.params.userId;
@@ -40,7 +40,7 @@ module.exports = {
             filter.by = !filter.by ? 'created' : filter.by;
             filter.start = parseInt((filter.page - 1) * filter.limit);
             filter.search = !filter.search ? '%%' : `%${filter.search}%`;
-            const count = await bookModels.getCountBookByFilter(filter);
+            const count = await bookModels.getCountBook(filter);
             const countData = count;
             const countPage = Math.ceil(parseInt(countData) / filter.limit);
             const currentPage = filter.page;

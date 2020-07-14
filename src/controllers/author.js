@@ -11,16 +11,16 @@ module.exports = {
             return helper.response(response, 500, { message: error });
         }
     },
-    getAuthorById: async function(request, response){
-        try {
-            const id = request.params.id;
-            const result = await authorModels.getAuthorById(id);
+    // getAuthorById: async function(request, response){
+    //     try {
+    //         const id = request.params.id;
+    //         const result = await authorModels.getAuthorById(id);
 
-            return helper.response(response, 200, result);
-        } catch (error) {
-            return helper.response(response, 500, { message: error });
-        }
-    },
+    //         return helper.response(response, 200, result);
+    //     } catch (error) {
+    //         return helper.response(response, 500, { message: error });
+    //     }
+    // },
     postAuthor: async function(request, response){
         try {
             const setData = request.body;

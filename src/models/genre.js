@@ -12,17 +12,17 @@ module.exports = {
             });
         });
     },
-    getGenreById: function(id){
-        return new Promise(function(resolve, reject){
-            connection.query("SELECT * FROM genres WHERE id=?", id, function(error, result){
-                if (!error) {
-                    resolve(result[0]);
-                } else {
-                    reject(new Error(error));
-                }
-            });
-        });
-    },
+    // getGenreById: function(id){
+    //     return new Promise(function(resolve, reject){
+    //         connection.query("SELECT * FROM genres WHERE id=?", id, function(error, result){
+    //             if (!error) {
+    //                 resolve(result[0]);
+    //             } else {
+    //                 reject(new Error(error));
+    //             }
+    //         });
+    //     });
+    // },
     postGenre: function(setData){
         return new Promise(function(resolve, reject){
             connection.query("INSERT INTO genres SET ?", setData, function(error, result){

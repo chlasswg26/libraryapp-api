@@ -11,16 +11,16 @@ module.exports = {
             return helper.response(response, 500, { message: error });
         }
     },
-    getGenreById: async function(request, response){
-        try {
-            const id = request.params.id;
-            const result = await genreModels.getGenreById(id);
+    // getGenreById: async function(request, response){
+    //     try {
+    //         const id = request.params.id;
+    //         const result = await genreModels.getGenreById(id);
 
-            return helper.response(response, 200, result);
-        } catch (error) {
-            return helper.response(response, 500, { message: error });
-        }
-    },
+    //         return helper.response(response, 200, result);
+    //     } catch (error) {
+    //         return helper.response(response, 500, { message: error });
+    //     }
+    // },
     postGenre: async function(request, response){
         try {
             const setData = request.body;

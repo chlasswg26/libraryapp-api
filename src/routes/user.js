@@ -6,7 +6,7 @@ const { authentication } = require('../middleware/auth');
 const { multer } = require('../middleware/multer');
 
 Route
-    .get('/:id', authentication, userControllers.getUserById)
+    // .get('/:id', authentication, userControllers.getUserById)
     .put('/:id', authentication, multer, userControllers.putUser)
 
 module.exports = Route;

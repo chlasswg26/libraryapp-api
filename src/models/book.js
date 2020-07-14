@@ -2,8 +2,8 @@ const connection = require('../config/mysql');
 
 module.exports = {
     getBook: function(){
-        return new Promise(function(resolve, reject){
-            connection.query("SELECT * FROM books", function(error, result){
+        return new Promise(function (resolve, reject) {
+            connection.query("SELECT books.id, books.title, books.description, books.genre as id_genre, genres.name as genre, books.author as id_author, authors.name as author, books.user as id_user, users.name as user, books.status, books.image, books.created, books.updated FROM books LEFT JOIN genres ON books.genre = genres.id LEFT JOIN authors ON books.author = authors.id LEFT JOIN users ON books.user = users.id", function (error, result) {
                 if (!error) {
                     resolve(result);
                 } else {
@@ -12,32 +12,32 @@ module.exports = {
             });
         });
     },
-    getBookById: function(id){
-        return new Promise(function(resolve, reject){
-            connection.query("SELECT * FROM books WHERE id=?", id, function(error, result){
-                if (!error) {
-                    resolve(result[0]);
-                } else {
-                    reject(new Error(error));
-                }
-            });
-        });
-    },
+    // getBookById: function(id){
+    //     return new Promise(function(resolve, reject){
+    //         connection.query("SELECT * FROM books WHERE id=?", id, function(error, result){
+    //             if (!error) {
+    //                 resolve(result[0]);
+    //             } else {
+    //                 reject(new Error(error));
+    //             }
+    //         });
+    //     });
+    // },
     getBookByUser: function(userId){
         return new Promise(function(resolve, reject){
-            connection.query("SELECT * FROM books WHERE user=?", userId, function(error, result){
+            connection.query("SELECT books.id, books.title, books.description, books.genre as id_genre, genres.name as genre, books.author as id_author, authors.name as author, books.user as id_user, users.name as user, books.status, books.image, books.created, books.updated FROM books LEFT JOIN genres ON books.genre = genres.id LEFT JOIN authors ON books.author = authors.id LEFT JOIN users ON books.user = users.id WHERE user=?", userId, function(error, result){
                 if (!error) {
                     resolve(result);
                 } else {
+                    console.log(error);
                     reject(new Error(error));
                 }
             });
         });
     },
-    getCountBookByFilter: function(filter){
+    getCountBook: function(){
         return new Promise(function(resolve, reject){
-            const query = `SELECT COUNT(*) totalRows FROM books`;
-            connection.query(query, function(error, result){
+            connection.query("SELECT COUNT(*) as totalRows FROM books", function(error, result){
                 if (!error) {
                     resolve(result[0].totalRows)
                 } else {
@@ -48,7 +48,7 @@ module.exports = {
     },
     getBookByFilter: function(filter){
         return new Promise(function(resolve, reject){
-            const query = `SELECT * FROM books WHERE title LIKE "${filter.search}" OR description LIKE "${filter.search}" OR genre LIKE "${filter.search}" OR author LIKE "${filter.search}" OR status LIKE "${filter.search}" ORDER BY ${filter.by} ${filter.sort} LIMIT ${filter.start},${filter.limit}`;
+            const query = `SELECT books.id, books.title, books.description, books.genre as id_genre, genres.name as genre, books.author as id_author, authors.name as author, books.user as id_user, users.name as user, books.status, books.image, books.created, books.updated FROM books LEFT JOIN genres ON books.genre = genres.id LEFT JOIN authors ON books.author = authors.id LEFT JOIN users ON books.user = users.id WHERE title LIKE "${filter.search}" OR description LIKE "${filter.search}" OR genre LIKE "${filter.search}" OR author LIKE "${filter.search}" OR status LIKE "${filter.search}" ORDER BY ${filter.by} ${filter.sort} LIMIT ${filter.start},${filter.limit}`;
             connection.query(query, function(error, result){
                 if (!error) {
                     resolve(result)

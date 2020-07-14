@@ -2,16 +2,16 @@ const userModels = require('../models/user');
 const helper = require('../helpers');
 
 module.exports = {
-    getUserById: async function(request, response){
-        try {
-            const id = request.params.id;
-            const result = await userModels.getUserById(id);
+    // getUserById: async function(request, response){
+    //     try {
+    //         const id = request.params.id;
+    //         const result = await userModels.getUserById(id);
 
-            return helper.response(response, 200, result);
-        } catch (error) {
-            return helper.response(response, 500, { message: error });
-        }
-    },
+    //         return helper.response(response, 200, result);
+    //     } catch (error) {
+    //         return helper.response(response, 500, { message: error });
+    //     }
+    // },
     putUser: async function(request, response){
         try {
             const setData = request.body;
