@@ -3,7 +3,7 @@ const connection = require('../config/mysql');
 module.exports = {
     getHistory: function(){
         return new Promise(function(resolve, reject){
-            connection.query("SELECT history.id, history.book as id_book, books.title as book, history.user as id_user, users.name as user, history.status, history.created FROM history INNER JOIN books ON history.book = books.id INNER JOIN users ON history.user = users.id", function(error, result){
+            connection.query("SELECT history.id, history.book as id_book, books.title as book, books.image as image, history.user as id_user, users.name as user, history.status, history.created FROM history INNER JOIN books ON history.book = books.id INNER JOIN users ON history.user = users.id", function(error, result){
                 if (!error) {
                     resolve(result);
                 } else {
@@ -14,10 +14,11 @@ module.exports = {
     },
     getHistoryByUserId: function(userId){
         return new Promise(function(resolve, reject){
-            connection.query("SELECT * FROM history WHERE user=?", userId, function(error, result){
+            connection.query("SELECT history.id, history.book as id_book, books.title as book, books.image as image, history.user as id_user, users.name as user, history.status, history.created FROM history LEFT JOIN books ON history.book = books.id LEFT JOIN users ON history.user = users.id WHERE history.user=?", userId, function(error, result){
                 if (!error) {
                     resolve(result);
                 } else {
+                    console.log(error);
                     reject(new Error(error));
                 }
             });
