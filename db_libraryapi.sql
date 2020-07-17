@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2020 at 04:44 PM
+-- Generation Time: Jul 17, 2020 at 04:43 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.31
 
@@ -74,7 +74,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `title`, `description`, `image`, `genre`, `author`, `status`, `user`, `created`, `updated`) VALUES
-(1, 'The Complete Stories', 'A teacher gave me Flannery O’Connor’s short story collection in the ninth grade. I grew up in a small town where girls were taught to be polite and not laugh too loud or talk too much or show interest in anything that might scare away the boys. It was a revelation to read O’Connor’s work. Here was a woman from a small Georgia town (like me!) who in direct contravention to her sex and social class was writing the kinds of stories that I was not only interested in reading, but wanted to start writing myself. Her bravery and clarity of vision laid an early foundation for my own work.', '3cb52df4d5ea437c2c9cbff49b46174a1e6f.jpg', 1, 1, '2', 1, '2020-07-09 06:55:01', '2020-07-09 07:40:57'),
+(1, 'The Complete Stories', 'A teacher gave me Flannery O’Connor’s short story collection in the ninth grade. I grew up in a small town where girls were taught to be polite and not laugh too loud or talk too much or show interest in anything that might scare away the boys. It was a revelation to read O’Connor’s work. Here was a woman from a small Georgia town (like me!) who in direct contravention to her sex and social class was writing the kinds of stories that I was not only interested in reading, but wanted to start writing myself. Her bravery and clarity of vision laid an early foundation for my own work.', '3cb52df4d5ea437c2c9cbff49b46174a1e6f.jpg', 1, 1, '1', 1, '2020-07-09 06:55:01', '2020-07-17 14:43:11'),
 (2, 'Letting Go', 'My dad gave me the novel Letting Go by Philip Roth. Dad read very little fiction—only one book of fiction a year. He was a political scientist, and he read dozens and dozens of non-fiction, academic books every year. But he always became enthusiastic about his one, annual book of fiction, which he would then recommend to everyone. He loved Roth. I like the novel, because it is Roth’s second—and unfamous—book; the writing shows his earnestness. He was looking for his voice then. I love the early novels of writers, for that same reason.', '6f6706c40b679ceb931806d75196e5acb460.jpg', 2, 2, '2', NULL, '2020-07-09 07:16:59', '2020-07-09 07:16:59'),
 (4, 'Fear of Flying', 'Knowing it is my favorite book, for my 34th birthday, a boyfriend once gave me a signed first edition of Erica Jong’s Fear of Flying.  Having always read tattered paperback versions, I had no idea the original was adorned with a spectacularly ornate cover that’s evocative of a Hieronymus Bosch.  I’m not a big collector of anything but no matter how often I pare down my belongings, I never get rid of this.  (Even though the boyfriend was long-ago lost to history, his accompanying birthday card remains tucked inside the book.)', '0a38b67c11f042d9a588f06fca01240d25fa.jpg', 3, 3, '2', NULL, '2020-07-09 07:21:08', '2020-07-09 07:21:08'),
 (5, 'The French Laundry Cookbook', 'In the winter of 2005, I received Thomas Keller’s The French Laundry Cookbook as a Christmas present.  It was during my early, struggling-writer years, when I was working as a chef to support my family (and my writing), and I often wondered if I’d ever make it as an author.  I remember sitting down on Christmas Day to read Keller’s book in my small apartment in Colorado.  I was inspired by his love for cooking, his artistry and creativity, and his deep dedication to his art.  The book was an inspiration to me to keep writing and pursuing my dream of publication, and I promised myself that when I published my first book, I would celebrate at one of his restaurants. Ten years later, I signed my contract for Children of the New World with Picador.  This past November, I invited my family to Per Se as a thank you for all their love and support throughout my years of writing, and I lifted a glass in thanks to Keller.', 'd3fc8f330a4957886c9dc967eddab744c982.png', 4, 4, '2', NULL, '2020-07-09 07:23:35', '2020-07-09 07:23:35');
@@ -154,8 +154,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `verify`, `verify_code`, `image`, `created`, `updated`) VALUES
-(1, 'Cahyo Ady', 'cahyo4713@gmail.com', '$2b$18$33JNL9svXVyTKfdujaSrEuUIC5e2flgqctgb2lX4ywvNNwlM39d32', '1', '2', NULL, '499e59c20a445547b2c43e062b118bf3cb67.png', '2020-07-09 04:17:40', '2020-07-09 06:47:56'),
-(2, 'Ichlas Wardy Gustama', 'ichlaswardy26@gmail.com', '$2b$18$Am38nUo2/58Hdw7hsvfGjO6zRS9VWHyIoJZJ4Z582b5e.0NVI2Xdy', '2', '2', NULL, NULL, '2020-07-09 06:43:12', '2020-07-09 06:45:44');
+(1, 'Cahyo Ady', 'cahyo4713@gmail.com', '$2b$18$33JNL9svXVyTKfdujaSrEuUIC5e2flgqctgb2lX4ywvNNwlM39d32', '1', '2', NULL, '499e59c20a445547b2c43e062b118bf3cb67.png', '2020-07-09 04:17:40', '2020-07-12 13:50:23'),
+(2, 'Ichlas Wardy Gustama', 'ichlaswardy26@gmail.com', '$2b$18$Am38nUo2/58Hdw7hsvfGjO6zRS9VWHyIoJZJ4Z582b5e.0NVI2Xdy', '2', '2', NULL, NULL, '2020-07-09 06:43:12', '2020-07-09 06:45:44'),
+(3, 'Yusup Romadhoni', 'jyusup77@gmail.com', '$2b$18$sGyGyys8oGtcXlJr7y/CzepMyom.YUxEwyO4kua2uYaFP1S/A2ZUu', '1', '2', NULL, NULL, '2020-07-12 13:37:37', '2020-07-12 13:38:05');
 
 --
 -- Indexes for dumped tables
@@ -175,8 +176,7 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `title` (`title`),
   ADD KEY `genre` (`genre`),
-  ADD KEY `author` (`author`),
-  ADD KEY `user` (`user`);
+  ADD KEY `author` (`author`);
 
 --
 -- Indexes for table `genres`
@@ -231,7 +231,7 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -241,7 +241,6 @@ ALTER TABLE `users`
 -- Constraints for table `books`
 --
 ALTER TABLE `books`
-  ADD CONSTRAINT `books_ibfk_2` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `books_ibfk_3` FOREIGN KEY (`author`) REFERENCES `authors` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `books_ibfk_4` FOREIGN KEY (`genre`) REFERENCES `genres` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
