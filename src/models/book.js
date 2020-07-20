@@ -83,6 +83,7 @@ module.exports = {
                     };
                     resolve(newData);
                 } else {
+                    console.log(error);
                     reject(new Error(error));
                 }
             });

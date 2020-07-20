@@ -48,19 +48,19 @@ module.exports = {
             const previousPage = (currentPage - 1) <= 0 ? null : currentPage - 1;
             const pagination = {
                 limit: filter.limit,
-                records: {
+                records: [{
                     data: countData,
                     page: countPage,
-                },
-                pages: {
+                }],
+                pages: [{
                     current: currentPage,
                     next: nextPage,
                     previous: previousPage,
-                },
+                }],
             };
             const result = await bookModels.getBookByFilter(filter);
             
-            return helper.response(response, 200, result, pagination);
+            return helper.response(response, 200, result, [pagination]);
         } catch (error) {
             return helper.response(response, 500, { message: error });
         }
