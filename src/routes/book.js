@@ -7,7 +7,7 @@ const { multer } = require('../middleware/multer');
 
 Route
     .get('/', bookControllers.getBook)
-    // .get('/:id', bookControllers.getBookById)
+    .get('/:id', bookControllers.getBookById)
     .get('/user/:userId', authentication, bookControllers.getBookByUser)
     .post('/filter', authentication, bookControllers.getBookByFilter)
     .post('/', authentication, authorization, multer, bookControllers.postBook)

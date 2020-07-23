@@ -12,24 +12,23 @@ module.exports = {
             });
         });
     },
-    // getBookById: function(id){
-    //     return new Promise(function(resolve, reject){
-    //         connection.query("SELECT * FROM books WHERE id=?", id, function(error, result){
-    //             if (!error) {
-    //                 resolve(result[0]);
-    //             } else {
-    //                 reject(new Error(error));
-    //             }
-    //         });
-    //     });
-    // },
+    getBookById: function(id){
+        return new Promise(function(resolve, reject){
+            connection.query("SELECT books.id, books.title, books.description, books.genre as id_genre, genres.name as genre, books.author as id_author, authors.name as author, books.user as id_user, users.name as user, books.status, books.image, books.created, books.updated FROM books LEFT JOIN genres ON books.genre = genres.id LEFT JOIN authors ON books.author = authors.id LEFT JOIN users ON books.user = users.id WHERE books.id=?", id, function(error, result){
+                if (!error) {
+                    resolve(result[0]);
+                } else {
+                    reject(new Error(error));
+                }
+            });
+        });
+    },
     getBookByUser: function(userId){
         return new Promise(function(resolve, reject){
             connection.query("SELECT books.id, books.title, books.description, books.genre as id_genre, genres.name as genre, books.author as id_author, authors.name as author, books.user as id_user, users.name as user, books.status, books.image, books.created, books.updated FROM books LEFT JOIN genres ON books.genre = genres.id LEFT JOIN authors ON books.author = authors.id LEFT JOIN users ON books.user = users.id WHERE user=?", userId, function(error, result){
                 if (!error) {
                     resolve(result);
                 } else {
-                    console.log(error);
                     reject(new Error(error));
                 }
             });
@@ -83,7 +82,6 @@ module.exports = {
                     };
                     resolve(newData);
                 } else {
-                    console.log(error);
                     reject(new Error(error));
                 }
             });
