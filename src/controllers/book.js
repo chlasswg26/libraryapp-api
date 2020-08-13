@@ -1,5 +1,6 @@
 const bookModels = require('../models/book');
 const helper = require('../helpers');
+const RedisClient = require('../config/redis');
 
 module.exports = {
     getBook: async function(request, response){
@@ -33,6 +34,7 @@ module.exports = {
     },
     getBookByFilter: async function(request, response){
         try {
+            const redisKey = helper.redis(request.query);
             let filter = request.query;
             filter.page = parseInt(!filter.page ? 1 : filter.page);
             filter.limit = parseInt(!filter.limit ? 4 : filter.limit);
@@ -46,7 +48,7 @@ module.exports = {
             const currentPage = filter.page;
             const nextPage = ((currentPage + 1) - countPage) >= 1 ? null : currentPage + 1;
             const previousPage = (currentPage - 1) <= 0 ? null : currentPage - 1;
-            const pagination = {
+            const pagination = [{
                 limit: filter.limit,
                 records: [{
                     data: countData,
@@ -57,10 +59,27 @@ module.exports = {
                     next: nextPage,
                     previous: previousPage,
                 }],
-            };
+            }];
             const result = await bookModels.getBookByFilter(filter);
+            const combineResult = {
+              data: result,
+              pagination: pagination,
+            };
+
+            RedisClient.setex(
+              `book:${redisKey}`,
+              600,
+              JSON.stringify(combineResult),
+              function(error, reply) {
+                  if (error) throw error;
+                  
+                  if (reply) {
+                      console.log('redis set cache', reply);
+                  }
+              }
+            );
             
-            return helper.response(response, 200, result, [pagination]);
+            return helper.response(response, 200, result, pagination);
         } catch (error) {
             return helper.response(response, 500, { message: error });
         }
