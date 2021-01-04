@@ -46,7 +46,6 @@ List of dependencies using this project.
 ## Requirements
 
 * [`yarn`](https://yarnpkg.com/getting-started/install) or [`npm`](https://www.npmjs.com/)
-* [`react`](https://reactjs.org/docs/create-a-new-react-app.html)
 
 ## Optional setup
 
