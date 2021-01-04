@@ -51,7 +51,7 @@ List of dependencies using this project.
 
 - First, Create database as you want
 - Then import the `db_libraryapi.sql` to database that you created
-- After that you go to the read `Usage for development`
+- After that you need read to the section `Usage for development`
 
 ## Optional setup
 
