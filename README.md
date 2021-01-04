@@ -47,6 +47,12 @@ List of dependencies using this project.
 
 * [`yarn`](https://yarnpkg.com/getting-started/install) or [`npm`](https://www.npmjs.com/)
 
+## Setup
+
+- First, Create database as you want
+- Then import the `db_libraryapi.sql` to database that you created
+- After that you go to the read `Usage for development`
+
 ## Optional setup
 
 Open `.ENV` and replace with your config
